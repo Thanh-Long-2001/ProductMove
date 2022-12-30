@@ -1,6 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 import * as mongoose from 'mongoose';
+import { Role } from 'src/authentication/enums/role.enum';
 
 export type UserDocument = Document & User;
 
@@ -17,7 +18,7 @@ export class User {
     @Prop()
     numberphone: string;
     @Prop()
-    role: string;
+    role: Role[];
     @Prop()
     address: string;
     @Prop()

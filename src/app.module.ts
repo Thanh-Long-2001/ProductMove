@@ -7,6 +7,8 @@ import { AdminModule } from './admin/admin.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { AuthModule } from './authentication/auth.module';
 import { CssxModule } from './cssx/cssx.module';
+import { DlppController } from './dlpp/dlpp.controller';
+import { DlppModule } from './dlpp/dlpp.module';
 
 @Module({
   imports: [
@@ -14,6 +16,7 @@ import { CssxModule } from './cssx/cssx.module';
     AdminModule,
     AuthModule,
     CssxModule,
+    DlppModule,
   ],
   controllers: [AppController],
   providers: [AppService],

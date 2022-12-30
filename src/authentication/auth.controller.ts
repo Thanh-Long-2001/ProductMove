@@ -18,7 +18,9 @@ import { RolesGuard } from './guards/role.guard';
 import { Response } from 'express';
 import { RefreshJwtAuthGuard } from './guards/refresh.guard';
 import { AdminService } from 'src/admin/admin.service';
+import { ApiBearerAuth, ApiBody, ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Authentication')
 @Controller('auth')
 export class AuthController {
     constructor(
@@ -26,10 +28,20 @@ export class AuthController {
         private adminService: AdminService
     ) {}
 
+    @ApiBody({
+        schema: {
+        type: 'object',
+        properties: {
+            username: { type: 'string' },
+            password: { type: 'string' }
+        },
+        },
+    })
     @UseGuards(LocalAuthGuard)
     @Post('/login')
     async login(@Request() req, @Res({ passthrough: true }) res: Response) {
         const accessToken = await this.authService.getJwtToken(req.user);
+        
         const refreshToken = await this.authService.getRefreshToken(req.user._id, req.user);
         return {
             accessToken: accessToken,

@@ -9,7 +9,7 @@ export class RolesGuard implements CanActivate {
 
     // Hàm canActivate trả về true / false cho biết yêu cầu có được thực hiện hay không
     canActivate(context: ExecutionContext): boolean {
-        const requiredRoles = this.reflector.getAllAndOverride<Role[]>(ROLES_KEY, [
+        const requiredRoles =  this.reflector.getAllAndOverride<Role[]>(ROLES_KEY, [
             context.getHandler(),
             context.getClass(),
         ]);
@@ -19,6 +19,6 @@ export class RolesGuard implements CanActivate {
         }
         
         const { user } = context.switchToHttp().getRequest();
-        return requiredRoles.some((role) => user.role?.includes(role));
+        return requiredRoles.some((role) => user.roles?.includes(role));
     }
 }

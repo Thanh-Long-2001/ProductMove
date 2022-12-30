@@ -6,7 +6,7 @@ export class ProductDTO {
     weight: number;
     speed: number;
     color: string;
-    brand: any;
+    brand: string;
     image: string;
     price: number;
 }

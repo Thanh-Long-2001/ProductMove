@@ -16,7 +16,7 @@ import { RefreshStrategy } from './strategies/refresh.strategy';
     }),
     JwtModule.register({
       secret: process.env.JWT_SECRET,
-      signOptions: { expiresIn: '10000s' },
+      signOptions: { expiresIn: '100000s' },
     }),
     AdminModule, 
     PassportModule,  
