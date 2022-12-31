@@ -243,6 +243,8 @@ export class AdminController {
     @Roles(Role.Admin)
     @Post('api/cssx/create')
     async createCSSX( @Body() cssxDto: CssxDTO) {
+
+        console.log(cssxDto)
         return await this.adminService.createCSSX(cssxDto);
     }
 
@@ -255,8 +257,8 @@ export class AdminController {
 
     @UseGuards(JwtAuthGuard, RolesGuard)
     @Roles(Role.Admin)
-    @Get('api/cssx/:id')
-    async getACSSX(@Param() id: string) {
+    @Get('api/cssx/getACSSX/:id')
+    async getACSSX(@Param('id') id: string) {
         return await this.adminService.getACSSX(id);
     }
 
@@ -309,8 +311,8 @@ export class AdminController {
     }
     @UseGuards(JwtAuthGuard, RolesGuard)
     @Roles(Role.Admin)
-    @Get('api/dlpp/:id')
-    async getADLPP(@Param() id: string) {
+    @Get('api/dlpp/getADLPP/:id')
+    async getADLPP(@Param('id') id: string) {
         return await this.adminService.getADLPP(id);
     }
 
@@ -362,8 +364,8 @@ export class AdminController {
     }
     @UseGuards(JwtAuthGuard, RolesGuard)
     @Roles(Role.Admin)
-    @Get('api/ttbnh/:id')
-    async getATTBH(@Param() id: string) {
+    @Get('api/ttbnh/getATTBH/:id')
+    async getATTBH(@Param('id') id: string) {
         return await this.adminService.getATTBH(id);
     }
 
